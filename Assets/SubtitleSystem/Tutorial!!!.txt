@@ -1,0 +1,70 @@
+# TUTORIAL
+
+ENG: 
+Subtitles - For the whole system to work, you need to add the "AllSystem" prefab to the scene, and then simply attach a Canvas to it, where your subtitles will appear.
+To add subtitle spawning, you need to insert a special line into your script (for example, BaldiScript) inside Baldi’s movement method:
+
+UIPopupTextManagerWithMovement.Show("B_Slap", Color.green, transform, 1f, 0f);
+
+UIPopupTextManagerWithMovement.Show – displays the subtitle itself.
+
+"B_Slap" – inside the quotes, specify the text that will appear in the subtitle.
+
+Color.green – the color of the text.
+
+transform – the object from which the subtitle will appear (better not to change it).
+
+f (1) – how long the subtitle will be shown.
+
+f (2) – the delay before the subtitle appears.
+
+You can just copy and paste this line into your methods.
+You can also write another line below it – after the first subtitle appears, the second one will appear, and so on.
+
+Localization – In the tool’s folder there is a text document called "triggers". In it, you can write a key and a value.
+Example:
+
+B_Slap(SLAP)
+
+B_Slap - the key (it must always come before the value).
+
+(SLAP) – the value (it must always be in parentheses).
+
+For it to work, the AllSystem prefab with the specified localization text file must be present in the scene.
+
+______________________________________________________________________________________________________________________________
+
+РУС:
+Для того чтобы система работала, нужно добавить на сцену префаб AllSystem, а затем прикрепить к нему канвас, в котором будут появляться субтитры.
+Чтобы добавить спавн субтитров, в вашем скрипте (например, BaldiScript) в методе движения Балди нужно добавить специальную строку:
+
+UIPopupTextManagerWithMovement.Show("B_Slap", Color.green, transform, 1f, 0f);
+
+
+UIPopupTextManagerWithMovement.Show — отображает субтитр.
+
+"B_Slap" — текст, который будет показан в субтитре (обязательно заключать в кавычки).
+
+Color.green — цвет текста.
+
+transform — объект, от которого будет появляться субтитр (лучше не изменять).
+
+1f — время показа субтитра.
+
+0f — задержка перед его показом.
+
+Вы можете просто скопировать и вставить эту строку в нужные методы.
+Также можно добавить несколько строк подряд — тогда после первого субтитра будет показан второй и так далее.
+
+Локализация
+
+В папке инструмента есть текстовый документ triggers, в котором вы можете задать ключи и значения.
+Пример:
+
+B_Slap(SLAP)
+
+B_Slap — ключ (всегда должен идти перед значением).
+
+(SLAP) — значение (обязательно указывается в скобках).
+
+Для работы локализации на сцене также должен быть префаб AllSystem с указанным текстовым файлом локализации.

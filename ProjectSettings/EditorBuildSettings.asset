@@ -1,0 +1,64 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1045 &1
+EditorBuildSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/WarningScreen.unity
+    guid: fad70474069a46840a3e6a70d7a2dd64
+  - enabled: 1
+    path: Assets/Scenes/TitleScreen.unity
+    guid: d6ea69eecf1e5c9419dd3e04c5c88e33
+  - enabled: 1
+    path: Assets/Scenes/ClassicSchool.unity
+    guid: 44cca6e2f09d11346a700f6408e82b77
+  - enabled: 0
+    path: Assets/Scenes/TestRoom.unity
+    guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/Scenes/GrandOpening.unity
+    guid: 3508a92067732ea47ba0fa55d562cf11
+  - enabled: 1
+    path: Assets/Scenes/MainSchool.unity
+    guid: d2e4e66f103cbba46a0f5957d868101b
+  - enabled: 1
+    path: Assets/Scenes/SecretClassicRoom.unity
+    guid: 7e1105bc1d6a08b43a645641280f40a3
+  - enabled: 1
+    path: Assets/Scenes/Camp3DTripEntrance.unity
+    guid: b331990e5a1627e4180cf8878c3de0be
+  - enabled: 1
+    path: Assets/Scenes/CampTripA.unity
+    guid: 4457c32b1a9a74743975247ec6a0e6c7
+  - enabled: 1
+    path: Assets/Scenes/BaldloonRush.unity
+    guid: f30c43a5bfe19894ca8b1888b200d3a8
+  - enabled: 1
+    path: Assets/Scenes/FGPDemo.unity
+    guid: 6decdf460044bf2439483e16eb0e65e2
+  - enabled: 1
+    path: Assets/Scenes/Farm3DTripEntrance.unity
+    guid: 94327723b9b6cd64d9bb5858e23fe8b1
+  - enabled: 1
+    path: Assets/Scenes/FarmTripA.unity
+    guid: 0347cd1158c71d34a8d902a5e0bd9df9
+  - enabled: 1
+    path: Assets/Scenes/PartySchool.unity
+    guid: dfb2f5b82acaf3a4b9e9062379380a72
+  - enabled: 1
+    path: Assets/Scenes/FactorySchool.unity
+    guid: d0da48d3e33c63f4f86af815e6d0bd62
+  - enabled: 1
+    path: Assets/Scenes/MultiplayerScenes/MPloadScreen.unity
+    guid: 4d3fe9a8590d5f745a5a41dee78c9382
+  - enabled: 1
+    path: Assets/Scenes/MultiplayerScenes/MPlobbySelect.unity
+    guid: 151c6c53c3d18bd4996b131f303cfb51
+  - enabled: 1
+    path: Assets/Scenes/MultiplayerScenes/MPWaitRoom.unity
+    guid: f7f6af92b5452074e9d3012a241496fe
+  m_configObjects:
+    com.unity.input.settings.actions: {fileID: -944628639613478452, guid: ea7a23272aae6b94b9c702373d2f00d4, type: 3}
+  m_UseUCBPForAssetBundles: 0

@@ -1,0 +1,20 @@
+fileFormatVersion: 2
+guid: d0e856aeb3004bb48b6c5326e10e269e
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - player: {instanceID: 0}
+  - barrier: {instanceID: 0}
+  - trigger: {instanceID: 0}
+  - inRenderer: {instanceID: 0}
+  - outRenderer: {instanceID: 0}
+  - doorOpen: {instanceID: 0}
+  - doorClose: {instanceID: 0}
+  - closed: {instanceID: 0}
+  - open: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
