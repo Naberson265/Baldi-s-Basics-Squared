@@ -1,10 +1,17 @@
 using UnityEngine;
+using System.Collections;
 
 public class StandardDoorScript : MonoBehaviour
 {
 	private void Start()
 	{
 		doorAudio = GetComponent<AudioSource>();
+		StartCoroutine(LateStart());
+	}
+	IEnumerator LateStart()
+	{
+		yield return null;
+		player = FindFirstObjectByType<PlayerController>().transform;
 	}
 	private void Update()
 	{

@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 using TMPro;
 
 public class MathMachine : MonoBehaviour
@@ -9,7 +10,13 @@ public class MathMachine : MonoBehaviour
         audioDevice = gameObject.GetComponent<AudioSource>();
         bonusQuestion = false;
         SetupActivity();
-    }
+		StartCoroutine(LateStart());
+	}
+	IEnumerator LateStart()
+	{
+		yield return null;
+		playerScript = FindFirstObjectByType<PlayerController>();
+	}
     public void SetupActivity()
     {
         answered = false;
@@ -81,7 +88,7 @@ public class MathMachine : MonoBehaviour
     public GameObject completionReward;
 	public GameController gameController;
 	public SpoopBaldi spoopBaldiScript;
-    public PlayerScript playerScript;
+    public PlayerController playerScript;
     public AudioSource audioDevice;
     public Material correctAnsMaterial;
     public Material incorrectAnsMaterial;

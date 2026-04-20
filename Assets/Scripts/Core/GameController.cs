@@ -6,10 +6,6 @@ using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
 {
-	void Awake()
-	{
-
-	}
     void Start()
     {
 		killedPlayer = false;
@@ -28,7 +24,13 @@ public class GameController : MonoBehaviour
 			mapTimerEnabled = false;
 		}
 		if (modifiersEnabled) ModifierCheck();
-    }
+		StartCoroutine(LateStart());
+	}
+	IEnumerator LateStart()
+	{
+		yield return null;
+		player = FindFirstObjectByType<PlayerController>();
+	}
 	public void ModifierCheck()
 	{
 		if (PlayerPrefs.GetInt("TimeOutModifier") == 1) mapTimer = 60f;
@@ -436,7 +438,7 @@ public class GameController : MonoBehaviour
     public CursorControllerScript cursorController;
 	public SpoopBaldi spoopBaldiScript;
 	public Principal principalScript;
-	public PlayerScript player;
+	public PlayerController player;
 	public bool mouseLocked;
 	public bool escapeSequence;
 	public bool finalExitReached;

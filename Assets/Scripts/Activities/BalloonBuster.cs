@@ -11,7 +11,13 @@ public class BalloonBuster : MonoBehaviour
         audioDevice = gameObject.GetComponent<AudioSource>();
         bonusQuestion = false;
         SetupActivity();
-    }
+		StartCoroutine(LateStart());
+	}
+	IEnumerator LateStart()
+	{
+		yield return null;
+		playerScript = FindFirstObjectByType<PlayerController>();
+	}
     public void SetupActivity()
     {
         answered = false;
@@ -101,5 +107,5 @@ public class BalloonBuster : MonoBehaviour
     public AudioSource audioDevice;
     public AudioClip correctSound;
     public AudioClip incorrectSound;
-    public PlayerScript playerScript;
+    public PlayerController playerScript;
 }

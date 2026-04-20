@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class KillerAgent : MonoBehaviour
 {
@@ -8,6 +9,15 @@ public class KillerAgent : MonoBehaviour
 	{
 		killed = false;
         killerActive = true;
+	}
+    void Start()
+    {
+		StartCoroutine(LateStart());
+	}
+	IEnumerator LateStart()
+	{
+		yield return null;
+		player = FindFirstObjectByType<PlayerController>();
 	}
     private void Update()
 	{
@@ -42,16 +52,16 @@ public class KillerAgent : MonoBehaviour
             }
             else if (!basic)
             {
-                if (other.transform.gameObject.GetComponent<PlayerScript>().item[0] != 13 && other.transform.gameObject.GetComponent<PlayerScript>().item[1] != 13 && other.transform.gameObject.GetComponent<PlayerScript>().item[2] != 13)
+                if (other.transform.gameObject.GetComponent<PlayerController>().item[0] != 13 && other.transform.gameObject.GetComponent<PlayerController>().item[1] != 13 && other.transform.gameObject.GetComponent<PlayerController>().item[2] != 13)
                 {
                     Kill();
                 }
                 else
                 {
                     spoopBaldiScript.GiveApple(12f);
-                    if (other.transform.gameObject.GetComponent<PlayerScript>().item[0] == 13) other.transform.gameObject.GetComponent<PlayerScript>().DeleteSpecificItem(0);
-                    else if (other.transform.gameObject.GetComponent<PlayerScript>().item[1] == 13) other.transform.gameObject.GetComponent<PlayerScript>().DeleteSpecificItem(1);
-                    else if (other.transform.gameObject.GetComponent<PlayerScript>().item[2] == 13) other.transform.gameObject.GetComponent<PlayerScript>().DeleteSpecificItem(2);
+                    if (other.transform.gameObject.GetComponent<PlayerController>().item[0] == 13) other.transform.gameObject.GetComponent<PlayerController>().DeleteSpecificItem(0);
+                    else if (other.transform.gameObject.GetComponent<PlayerController>().item[1] == 13) other.transform.gameObject.GetComponent<PlayerController>().DeleteSpecificItem(1);
+                    else if (other.transform.gameObject.GetComponent<PlayerController>().item[2] == 13) other.transform.gameObject.GetComponent<PlayerController>().DeleteSpecificItem(2);
                 }
             }
         }
@@ -120,18 +130,18 @@ public class KillerAgent : MonoBehaviour
     public bool killed;
     public bool killerActive;
     public bool acceptsApple;
+    public float killAnim;
+    public AudioSource audioSource;
+    public AudioClip achievementSFX;
+    public NavMeshAgent agent;
     public Transform killerTransform;
     public SpoopBaldi spoopBaldiScript;
     // Non-basic.
     public CameraScript cameraScript;
-    public PlayerScript player;
+    public PlayerController player;
     public GameController gameController;
     // Basic.
     public BasicCameraScript basicCameraScript;
     public BasicPlayerScript basicPlayer;
     public BasicGameController basicGameController;
-    public float killAnim;
-    public AudioSource audioSource;
-    public AudioClip achievementSFX;
-    public NavMeshAgent agent;
 }

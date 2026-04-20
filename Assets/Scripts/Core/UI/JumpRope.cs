@@ -1,8 +1,18 @@
 using TMPro;
 using UnityEngine;
+using System.Collections;
 
 public class JumpRopeScript : MonoBehaviour
 {
+	void Start()
+	{
+		StartCoroutine(LateStart());
+	}
+	IEnumerator LateStart()
+	{
+		yield return null;
+		ps = FindFirstObjectByType<PlayerController>();
+	}
 	private void OnEnable()
 	{
 		jumpDelay = 1f;
@@ -72,7 +82,7 @@ public class JumpRopeScript : MonoBehaviour
 	public TMP_Text jumpCount;
 	public Animator rope;
 	public CameraScript cs;
-	public PlayerScript ps;
+	public PlayerController ps;
 	public Playtime playtime;
 	public int jumps;
 	public float jumpDelay;

@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.AI;
+using System.Collections;
 
 public class Principal : MonoBehaviour
 {
@@ -8,6 +9,13 @@ public class Principal : MonoBehaviour
 		agent = GetComponent<NavMeshAgent>();
 		audioQueue = GetComponent<AudioQueueScript>();
 		audioDevice = GetComponent<AudioSource>();
+		StartCoroutine(LateStart());
+	}
+	IEnumerator LateStart()
+	{
+		yield return null;
+		playerScript = FindFirstObjectByType<PlayerController>();
+		player = playerScript.transform;
 	}
 	private void Update()
 	{
@@ -197,7 +205,7 @@ public class Principal : MonoBehaviour
 	public Transform player;
 	public Transform bully;
 	public bool bullySeen;
-	public PlayerScript playerScript;
+	public PlayerController playerScript;
 	public ItsABully bullyScript;
 	public SpoopBaldi spoopBaldiScript;
 	public Transform wanderTarget;

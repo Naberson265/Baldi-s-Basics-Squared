@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class BusterBalloon : MonoBehaviour
 {
@@ -8,7 +9,13 @@ public class BusterBalloon : MonoBehaviour
         poppingTime = UnityEngine.Random.Range(0.5f, 3f);
         balloonSprite = GetComponent<SpriteRenderer>();
         balloonSprite.sprite = balloonSprites[Mathf.RoundToInt(UnityEngine.Random.Range(0f, 7f))];
-    }
+		StartCoroutine(LateStart());
+	}
+	IEnumerator LateStart()
+	{
+		yield return null;
+		playerScript = FindFirstObjectByType<PlayerController>();
+	}
     public void Update()
     {
         gameObject.layer = 7;
@@ -33,7 +40,7 @@ public class BusterBalloon : MonoBehaviour
     public float poppingTime;
     public SpriteRenderer balloonSprite;
     public Sprite[] balloonSprites;
-    public PlayerScript playerScript;
+    public PlayerController playerScript;
     public BalloonBuster balloonBuster;
     public AudioClip popSound;
 	public Vector3 origin;

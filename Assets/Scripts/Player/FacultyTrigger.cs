@@ -1,10 +1,17 @@
 using UnityEngine;
+using System.Collections;
 
 public class FacultyTrigger : MonoBehaviour
 {
 	private void Start()
 	{
 		hitBox = GetComponent<BoxCollider>();
+		StartCoroutine(LateStart());
+	}
+	IEnumerator LateStart()
+	{
+		yield return null;
+		player = FindFirstObjectByType<PlayerController>();
 	}
 	private void OnTriggerStay(Collider other)
 	{
@@ -13,6 +20,6 @@ public class FacultyTrigger : MonoBehaviour
 			player.ResetGuilt("faculty", 1f);
 		}
 	}
-	public PlayerScript player;
+	public PlayerController player;
 	private BoxCollider hitBox;
 }

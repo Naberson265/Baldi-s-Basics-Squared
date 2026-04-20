@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class NumBalloon : MonoBehaviour
@@ -7,7 +8,13 @@ public class NumBalloon : MonoBehaviour
         currentlyHeld = false;
         origin = transform.position;
         poppingTime = UnityEngine.Random.Range(0.5f, 3f);
-    }
+		StartCoroutine(LateStart());
+	}
+	IEnumerator LateStart()
+	{
+		yield return null;
+		playerScript = FindFirstObjectByType<PlayerController>();
+	}
     public void Update()
     {
         interact = Input.GetButtonDown("Interact");
@@ -70,7 +77,7 @@ public class NumBalloon : MonoBehaviour
     public bool currentlyHeld;
     public bool bonus = false;
     public Transform player;
-    public PlayerScript playerScript;
+    public PlayerController playerScript;
 	public GameController gameController;
     public MathMachine mathMachine;
     public AudioClip popSound;

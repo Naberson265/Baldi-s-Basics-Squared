@@ -59,6 +59,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MultiplayerScenes/MPWaitRoom.unity
     guid: f7f6af92b5452074e9d3012a241496fe
+  - enabled: 1
+    path: Assets/Scenes/MultiplayerScenes/MPGame.unity
+    guid: a75a294110f1019488883116744b3f2a
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: ea7a23272aae6b94b9c702373d2f00d4, type: 3}
   m_UseUCBPForAssetBundles: 0

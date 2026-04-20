@@ -7,6 +7,10 @@ using TMPro;
 
 public class MPInRoomMenu : MonoBehaviourPunCallbacks
 {
+    void Start()
+    {
+        PhotonNetwork.AutomaticallySyncScene = true;
+    }
     private void Update()
     {
         roomCodeText.text = PhotonNetwork.CurrentRoom.Name;
@@ -84,6 +88,10 @@ public class MPInRoomMenu : MonoBehaviourPunCallbacks
             updatingProperties = new ExitGames.Client.Photon.Hashtable { {"Map", rMap}, {"Modifier", rModifier} };
             PhotonNetwork.CurrentRoom.SetCustomProperties(updatingProperties);
         }
+    }
+    public void LoadGameScene()
+    {
+        if (PhotonNetwork.IsMasterClient) PhotonNetwork.LoadLevel("MPGame");
     }
     public GameObject[] hostOnlyObjects;
     public int rMap;

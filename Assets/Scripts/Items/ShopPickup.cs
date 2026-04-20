@@ -4,6 +4,7 @@ public class ShopPickup : MonoBehaviour
 {
 	private void Update()
 	{
+        player = FindFirstObjectByType<PlayerController>().transform;
 		if (PlayerPrefs.GetInt("ItemRestriction") == 1) Destroy(gameObject);
         interact = Input.GetButtonDown("Interact");
 		if (interact == true && Time.timeScale != 0f)
@@ -243,7 +244,7 @@ public class ShopPickup : MonoBehaviour
                 gc.YTPGain(-ytpCost);
                 johnnyAudio.Stop();
                 johnnyAudio.PlayOneShot(boughtSFX[Mathf.RoundToInt(Random.Range(0, 6))]);
-                player.GetComponent<PlayerScript>().CollectItem(itemId);
+                player.GetComponent<PlayerController>().CollectItem(itemId);
             }
         }
         else if (gc.midGameYTPs < ytpCost)

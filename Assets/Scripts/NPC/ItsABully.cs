@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class ItsABully : MonoBehaviour
 {
@@ -6,6 +7,12 @@ public class ItsABully : MonoBehaviour
 	{
 		audioDevice = GetComponent<AudioSource>();
 		waitTime = Random.Range(60f, 120f);
+		StartCoroutine(LateStart());
+	}
+	IEnumerator LateStart()
+	{
+		yield return null;
+		player = FindFirstObjectByType<PlayerController>().transform;
 	}
 	private void Update()
 	{
@@ -35,7 +42,7 @@ public class ItsABully : MonoBehaviour
 	{
         Vector3 direction = player.position - transform.position;
 		RaycastHit raycastHit;
-		if (Physics.Raycast(transform.position + new Vector3(0f, 4f, 0f), direction, out raycastHit, Mathf.Infinity, rayLayerMask, QueryTriggerInteraction.Ignore) & raycastHit.transform.tag == "Player" & (transform.position - player.position).magnitude <= 30f & active && player.GetComponent<PlayerScript>().facultyTime <= 0f)
+		if (Physics.Raycast(transform.position + new Vector3(0f, 4f, 0f), direction, out raycastHit, Mathf.Infinity, rayLayerMask, QueryTriggerInteraction.Ignore) & raycastHit.transform.tag == "Player" & (transform.position - player.position).magnitude <= 30f & active && player.GetComponent<PlayerController>().facultyTime <= 0f)
 		{
 			if (!spoken)
 			{
@@ -59,20 +66,20 @@ public class ItsABully : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
 	{
-        if (other.transform.tag == "Player" && player.GetComponent<PlayerScript>().facultyTime <= 0f)
+        if (other.transform.tag == "Player" && player.GetComponent<PlayerController>().facultyTime <= 0f)
 		{
-			if (other.transform.gameObject.GetComponent<PlayerScript>().item[0] == 0 & other.transform.gameObject.GetComponent<PlayerScript>().item[1] == 0 & other.transform.gameObject.GetComponent<PlayerScript>().item[2] == 0)
+			if (other.transform.gameObject.GetComponent<PlayerController>().item[0] == 0 & other.transform.gameObject.GetComponent<PlayerController>().item[1] == 0 & other.transform.gameObject.GetComponent<PlayerController>().item[2] == 0)
 			{
 				audioDevice.PlayOneShot(noPass);
 			}
 			else
 			{
 				int num = Mathf.RoundToInt(Random.Range(0f, 2f));
-				while (other.transform.gameObject.GetComponent<PlayerScript>().item[num] == 0)
+				while (other.transform.gameObject.GetComponent<PlayerController>().item[num] == 0)
 				{
 					num = Mathf.RoundToInt(Random.Range(0f, 2f));
 				}
-				other.transform.gameObject.GetComponent<PlayerScript>().DeleteSpecificItem(num);
+				other.transform.gameObject.GetComponent<PlayerController>().DeleteSpecificItem(num);
 				int num2 = Mathf.RoundToInt(Random.Range(0f, 1f));
 				audioDevice.PlayOneShot(steal[num2]);
 				Reset();
@@ -81,7 +88,7 @@ public class ItsABully : MonoBehaviour
     }
     private void OnTriggerStay(Collider other)
 	{
-		if (other.transform.name == "Principal" & guilt > 0f || other.transform.tag == "Player" && player.GetComponent<PlayerScript>().facultyTime > 0f)
+		if (other.transform.name == "Principal" & guilt > 0f || other.transform.tag == "Player" && player.GetComponent<PlayerController>().facultyTime > 0f)
 		{
 			gameController.YTPGain(25);
 			Reset();

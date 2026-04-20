@@ -1,8 +1,19 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class EscapeTrigger : MonoBehaviour
 {
+	void Start()
+	{
+		StartCoroutine(LateStart());
+	}
+	IEnumerator LateStart()
+	{
+		yield return null;
+		gameController = FindFirstObjectByType<GameController>();
+		playerScript = FindFirstObjectByType<PlayerController>();
+	}
 	private void OnTriggerEnter(Collider other)
 	{
 		if (gameController.escapeSequence & other.tag == "Player")
@@ -63,5 +74,5 @@ public class EscapeTrigger : MonoBehaviour
 		}
 	}
 	public GameController gameController;
-	public PlayerScript playerScript;
+	public PlayerController playerScript;
 }

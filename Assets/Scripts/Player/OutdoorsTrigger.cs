@@ -1,10 +1,17 @@
 using UnityEngine;
+using System.Collections;
 
 public class OutdoorsTrigger : MonoBehaviour
 {
 	private void Start()
 	{
 		hitBox = GetComponent<BoxCollider>();
+		StartCoroutine(LateStart());
+	}
+	IEnumerator LateStart()
+	{
+		yield return null;
+		player = FindFirstObjectByType<PlayerController>();
 	}
 	private void OnTriggerStay(Collider other)
 	{
@@ -21,6 +28,6 @@ public class OutdoorsTrigger : MonoBehaviour
 	{
 		player.guiltType = "";
 	}
-	public PlayerScript player;
+	public PlayerController player;
 	private BoxCollider hitBox;
 }

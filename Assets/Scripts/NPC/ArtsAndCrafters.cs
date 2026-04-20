@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.AI;
+using System.Collections;
 
 public class ArtsAndCrafters : MonoBehaviour
 {
@@ -8,6 +9,12 @@ public class ArtsAndCrafters : MonoBehaviour
 		agent = GetComponent<NavMeshAgent>();
 		audioDevice = GetComponent<AudioSource>();
 		sprite.SetActive(false);
+		StartCoroutine(LateStart());
+	}
+	IEnumerator LateStart()
+	{
+		yield return null;
+		player = FindFirstObjectByType<PlayerController>().transform;
 	}
 	private void Update()
 	{
@@ -58,7 +65,7 @@ public class ArtsAndCrafters : MonoBehaviour
 		{
 			Vector3 direction = player.position - transform.position;
 			RaycastHit raycastHit;
-			if (Physics.Raycast(transform.position, direction, out raycastHit, Mathf.Infinity, rayLayerMask, QueryTriggerInteraction.Ignore) & raycastHit.transform.tag == "Player" & craftersRenderer.isVisible & sprite.activeSelf && player.GetComponent<PlayerScript>().facultyTime <= 0f)
+			if (Physics.Raycast(transform.position, direction, out raycastHit, Mathf.Infinity, rayLayerMask, QueryTriggerInteraction.Ignore) & raycastHit.transform.tag == "Player" & craftersRenderer.isVisible & sprite.activeSelf && player.GetComponent<PlayerController>().facultyTime <= 0f)
 			{
 				gettingAngry = true;
 			}

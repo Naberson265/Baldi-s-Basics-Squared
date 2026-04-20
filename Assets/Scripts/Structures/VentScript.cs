@@ -10,7 +10,7 @@ public class VentScript : MonoBehaviour
     {
         if (other.transform.tag == "Player")
         {
-            PlayerScript player = other.transform.GetComponent<PlayerScript>();
+            PlayerController player = other.transform.GetComponent<PlayerController>();
             player.inVent = true;
             if (ventPartType == "enter")
             {

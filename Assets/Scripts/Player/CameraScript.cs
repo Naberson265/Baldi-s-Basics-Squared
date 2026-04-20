@@ -1,4 +1,6 @@
+using System.Collections;
 using UnityEngine;
+
 
 public class CameraScript : MonoBehaviour
 {
@@ -7,7 +9,14 @@ public class CameraScript : MonoBehaviour
 		killedPlayer = false;
 		offset = transform.position - player.transform.position;
         gameObject.GetComponent<Camera>().useOcclusionCulling = true;
-    }
+		StartCoroutine(LateStart());
+	}
+	IEnumerator LateStart()
+	{
+		yield return null;
+		ps = FindFirstObjectByType<PlayerController>();
+		player = ps.gameObject;
+	}
     public void KillCam()
     {
 		killedPlayer = true;
@@ -51,7 +60,7 @@ public class CameraScript : MonoBehaviour
 		}
 	}
     public float lookBehind;
-	public PlayerScript ps;
+	public PlayerController ps;
     public Vector3 baldiOffset;
 	public bool killedPlayer;
     public Transform baldi;

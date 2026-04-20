@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.AI;
+using System.Collections;
 
 public class GreenBaldloon : MonoBehaviour
 {
@@ -7,6 +8,13 @@ public class GreenBaldloon : MonoBehaviour
 	{
 		agent = GetComponent<NavMeshAgent>();
 		Wander();
+		StartCoroutine(LateStart());
+	}
+	IEnumerator LateStart()
+	{
+		yield return null;
+		playerScript = FindFirstObjectByType<PlayerController>();
+		player = playerScript.transform;
 	}
 	private void Update()
 	{
@@ -56,7 +64,7 @@ public class GreenBaldloon : MonoBehaviour
 	public bool db;
 	public bool playerSeen;
 	public Transform player;
-	public PlayerScript playerScript;
+	public PlayerController playerScript;
 	public Transform wanderTarget;
 	public AIWanderPointSelector wanderer;
 	public float coolDown;

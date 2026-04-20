@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.AI;
+using System.Collections;
 
 public class Playtime : MonoBehaviour
 {
@@ -8,6 +9,13 @@ public class Playtime : MonoBehaviour
 		agent = GetComponent<NavMeshAgent>();
 		audioDevice = GetComponent<AudioSource>();
 		Wander();
+		StartCoroutine(LateStart());
+	}
+	IEnumerator LateStart()
+	{
+		yield return null;
+		playerScript = FindFirstObjectByType<PlayerController>();
+		player = playerScript.transform;
 	}
 	private void Update()
 	{
@@ -96,7 +104,7 @@ public class Playtime : MonoBehaviour
 	public int audVal;
 	public Animator animator;
 	public Transform player;
-	public PlayerScript playerScript;
+	public PlayerController playerScript;
 	public Transform wanderTarget;
 	public AIWanderPointSelector wanderer;
 	public float coolDown;
